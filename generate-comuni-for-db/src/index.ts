@@ -47,9 +47,11 @@ type Data = {
 };
 
 type ComuneForDb = {
-    name: string,
-    istat: number,
-    fisco: number
+    Name: string,
+    Istat: number,
+    Fisco: string,
+    RegionIstat: number,
+    Province: string
 }
 
 class Index {
@@ -61,10 +63,12 @@ class Index {
         const comuni = comuniSource
             .map(xx => {
                 return {
-                    name: xx.properties.name,
-                    istat: xx.properties.com_istat_code_num,
-                    fisco: xx.properties.com_catasto_code
-                } as unknown as ComuneForDb;
+                    Name: xx.properties.name,
+                    Istat: xx.properties.com_istat_code_num,
+                    Fisco: xx.properties.com_catasto_code,
+                    Province: xx.properties.prov_acr,
+                    RegionIstat: xx.properties.reg_istat_code_num
+                } as ComuneForDb;
             });
 
         const jsonComuni = JSON.stringify(comuni);
