@@ -1,0 +1,13 @@
+{
+  "name": "generate-comuni-for-db",
+  "version": "1.0.0",
+  "main": "out/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.4.9",
+    "typescript": "4.2.2"
+  },
+  "scripts": {
+    "start": "tsc && node ."
+  }
+}
