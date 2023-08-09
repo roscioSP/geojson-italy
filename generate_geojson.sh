@@ -25,9 +25,9 @@ mapshaper \
 for REG in $(seq 1 20)
 do
   mapshaper \
-    -i geojson/provinces-by-region/limits_IT_provinces.geojson -clean encoding=utf8 \
+    -i geojson/limits_IT_provinces.geojson -clean encoding=utf8 \
     -filter reg_istat_code_num==$REG \
-    -o geojson/${REG}.geojson bbox format=geojson gj2008
+    -o geojson/provinces-by-region/${REG}.geojson bbox format=geojson gj2008
 done
 
 for PROV in $(seq 1 111)
