@@ -2,5 +2,5 @@
 oc_comuni.simplified.topo.json
 
 generate-comuni-for-db/node_modules
-generate-comuni-for-db/out/
-generate-comuni-for-db/comuni-for-db.json
+generate-comuni-for-db/out
+generate-comuni-for-db/*Source.json

@@ -1,11 +1,12 @@
 import * as fs from 'fs/promises';
-import {Data, Feature, ComuneForDb} from './models/types';
+import {Data as ComuniData, ComuneForDb} from './models/comuniTypes';
+import {Data as ProvinceData, ProvinceForDb} from './models/provinceTypes';
 
 class Index {
-    static async start():  Promise<any> {
+    static async exportCities(): Promise<void> {
         const jsonData: string = await fs.readFile('../geojson/limits_IT_municipalities.geojson', 'utf-8');
 
-        const data: Data = JSON.parse(jsonData);
+        const data: ComuniData = JSON.parse(jsonData);
         const comuni = data.features
             .map(comune => {
                 return {
@@ -19,10 +20,29 @@ class Index {
 
         const jsonComuni = JSON.stringify(comuni);
 
-        await fs.writeFile('./comuni-for-db.json',  jsonComuni);
+        await fs.writeFile('./CitiesSource.json',  jsonComuni);
+    }
+
+    static async exportProvinces(): Promise<void> {
+        const jsonData: string = await fs.readFile('../geojson/limits_IT_provinces.geojson', 'utf-8');
+
+        const data: ProvinceData = JSON.parse(jsonData);
+        const comuni = data.features
+            .map(comune => {
+                return {
+                    Name: comune.properties.prov_name,
+                    Istat: comune.properties.prov_istat_code_num,
+                    RegionIstat: comune.properties.reg_istat_code_num
+                } as ProvinceForDb;
+            });
+
+        const jsonComuni = JSON.stringify(comuni);
+
+        await fs.writeFile('./ProvincesSource.json',  jsonComuni);
     }
 }
 
-Index.start();
+Index.exportCities();
+Index.exportProvinces();
 
 export default Index;

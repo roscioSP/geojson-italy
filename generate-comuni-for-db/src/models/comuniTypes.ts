@@ -1,3 +1,5 @@
+import { Geometry } from "./commonTypes"
+
 export type CrsProps = {
     name: string
 }
@@ -23,13 +25,6 @@ export type FeatureProps = {
     com_catasto_code: string,
     com_istat_code: string,
     com_istat_code_num: number
-}
-
-export type Coordinates = number[][];
-
-export type Geometry = {
-    type: string,
-    coordinates: Coordinates
 }
 
 export type Feature = {
