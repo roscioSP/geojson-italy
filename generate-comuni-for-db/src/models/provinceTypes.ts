@@ -25,5 +25,6 @@ export type Data = {
 export type ProvinceForDb = {
     Name: string,
     Istat: number,
-    RegionIstat: number
+    RegionIstat: number,
+    Code: string
 }

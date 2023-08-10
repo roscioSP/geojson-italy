@@ -28,11 +28,12 @@ class Index {
 
         const data: ProvinceData = JSON.parse(jsonData);
         const comuni = data.features
-            .map(comune => {
+            .map(province => {
                 return {
-                    Name: comune.properties.prov_name,
-                    Istat: comune.properties.prov_istat_code_num,
-                    RegionIstat: comune.properties.reg_istat_code_num
+                    Name: province.properties.prov_name,
+                    Istat: province.properties.prov_istat_code_num,
+                    RegionIstat: province.properties.reg_istat_code_num,
+                    Code: province.properties.prov_acr
                 } as ProvinceForDb;
             });
 
